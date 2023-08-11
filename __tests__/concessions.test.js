@@ -3,13 +3,14 @@ const concessions = require("../data/concessions.js");
 const {
     getConcessionById,
     calculateTotalFromIDs,
+    getConcessionByID,
 
 } = require("../src/concessions.js")
 
 
-describe("getConcessionById", ()=> {
+describe("getConcessionByID", ()=> {
     test("search the concessions name by ID number in the data", () => {
-        const actual = getConcessionById(concessions,"rNVCeVsri" );
+        const actual = getConcessionByID(concessions,"rNVCeVsri" );
         const expected = { id: "rNVCeVsri", name: "Candy", priceInCents: 569};
         expect(actual).toStrictEqual(expected);
     });

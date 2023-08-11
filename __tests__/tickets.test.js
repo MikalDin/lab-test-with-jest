@@ -4,7 +4,7 @@ const {
     getTicketByName,
     calculateFromTicketNames,
 
-} = require("../src/tickets.js)
+} = require("../src/tickets.js")
 
 describe("getTicketsByName", () => {
         test("searching for specific tickets by name in the data", () => {
@@ -22,25 +22,25 @@ describe("getTicketsByName", () => {
 
 describe("calculateTotalFromTicketNames", () => {
     test ("adds the total price of the selected ticketNames", () => {
-                const actual = calculateFromTicketNames(ticketData, ["Chi]d Regular) ;
+                const actual = calculateTotalFromTicketNames(ticketData, ["Chi]d Regular"]);
                 const expected = 1069;
                 expect(actual).toStrictEqual(expected);
 });
     test("Ignoring the addition of incorrect ticket names from calculation", ()=> {
-            const actual = calculateFromTicketNames(ticketsData, ["Child Regular", "Matinee"]);
+            const actual = calculateTotalFromTicketNames(ticketsData, ["Child Regular", "Matinee"]);
             const expected = 1069;
-            const(actual).toStrictEqual(expected);
+            expect(actual).toStrictEqual(expected);
 
 });
     test("accurately add the priceInCents from multiple adequeatly inputted ticketNames",()=>{
         const actual = calculateTotalFromTicketNames(ticketsData, ["Child Regular", "Senior Matinee"]);
         const expected = 1908;
-        const(actual).toStrictEqual(expected);
+        expect(actual).toStrictEqual(expected);
     });
 
     test("case insensitive", ()=> {
             const actual = calculateTotalFromTicketNames(ticketsData, ["CHILD REGULAR", "senior matineE"]);
             const expected = 1908;
-            const(actual).toStrictEqual(expected);
+            expect(actual).toStrictEqual(expected);
     });
 });
