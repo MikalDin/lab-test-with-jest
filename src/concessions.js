@@ -5,7 +5,7 @@
  * @returns A concession object with a matching ID or `null` if no object is found.
  */
 function getConcessionByID(concessions, id) {
-  return concessions.find((concession) => concession.id === id) || Error;
+  return concessions.find((concession) => concession.id === id) || null;
 }
 
 /**

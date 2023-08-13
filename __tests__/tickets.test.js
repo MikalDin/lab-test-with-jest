@@ -1,13 +1,13 @@
-const ticketData = require("../data/tickets.js")
-
+const ticketsData = require("../data/tickets.js");
 const {
     getTicketByName,
-    calculateFromTicketNames,
+    calculateTotalFromTicketNames,
 
 } = require("../src/tickets.js")
 
-describe("getTicketsByName", () => {
-        test("searching for specific tickets by name in the data", () => {
+
+describe("getTicketByName", () => {
+        test(" Returns a ticket object when given the name", () => {
             const actual = getTicketByName(ticketsData, "Child Regular")
              const expected = { id:"B8v5R2nVQ", name: "Child Regular", priceInCents: 1069 };
     expect(actual).toStrictEqual(expected);
@@ -15,14 +15,14 @@ describe("getTicketsByName", () => {
 });
     test("return Error for value that cannot be found in the data", () => {
     const actual = getTicketByName(ticketsData, "Child" );
-    const expected = Error;
+    const expected = null;
     expect(actual).toStrictEqual(expected);
     });
 });
 
 describe("calculateTotalFromTicketNames", () => {
-    test ("adds the total price of the selected ticketNames", () => {
-                const actual = calculateTotalFromTicketNames(ticketData, ["Chi]d Regular"]);
+    test (" Calculates a total based on the given ticket names.", () => {
+                const actual = calculateTotalFromTicketNames(ticketData, ["Child Regular"]);
                 const expected = 1069;
                 expect(actual).toStrictEqual(expected);
 });
@@ -32,7 +32,7 @@ describe("calculateTotalFromTicketNames", () => {
             expect(actual).toStrictEqual(expected);
 
 });
-    test("accurately add the priceInCents from multiple adequeatly inputted ticketNames",()=>{
+    test("accurately add the tickets.priceInCents from multiple adequeatly inputted ticketNames",()=>{
         const actual = calculateTotalFromTicketNames(ticketsData, ["Child Regular", "Senior Matinee"]);
         const expected = 1908;
         expect(actual).toStrictEqual(expected);
